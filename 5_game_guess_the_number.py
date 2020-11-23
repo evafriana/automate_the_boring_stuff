@@ -9,14 +9,17 @@ result = random.randint(1, 20)
 
 for guessesTaken in range(1, 7):
     print('take a guess.')
-    guess = int(input())
-
-    if guess < result:
-        print('your guess is too low')
-    elif guess > result:
-        print('Your guess is too high')
-    else:
-        break # This condition is for correct guess!
+    guess = input()
+    try:
+        guess = int(guess)
+        if guess < result:
+            print('your guess is too low')
+        elif guess > result:
+            print('Your guess is too high')
+        else:
+            break # This condition is for correct guess
+    except ValueError:
+        print('Use numbers instead')   
     
 if guess == result:
     print('Good job, {}! you guessed my number in {} guesses.'.format(name, str(guessesTaken)))
